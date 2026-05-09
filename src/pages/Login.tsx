@@ -52,35 +52,37 @@ export default function Login() {
   };
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center bg-dark-bg p-6">
-      <div className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] rounded-full bg-brand-primary/10 blur-[100px]" />
-      <div className="absolute -bottom-[10%] -right-[10%] w-[40%] h-[40%] rounded-full bg-brand-secondary/10 blur-[100px]" />
+    <div className="relative flex min-h-screen items-center justify-center bg-white p-6 selection:bg-brand-primary selection:text-black">
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+        <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-brand-primary/5 blur-[120px]" />
+        <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-brand-primary/10 blur-[120px]" />
+      </div>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="glass-card relative z-10 w-full max-w-sm p-8 bg-white border-none shadow-xl shadow-black/5"
+        className="relative z-10 w-full max-w-sm p-10 bg-white rounded-[40px] border border-black/5 shadow-2xl shadow-black/5"
       >
-        <button onClick={() => navigate('/')} className="mb-8 flex items-center gap-2 text-sm text-black/20 hover:text-black transition-colors">
-          <ArrowLeft size={16} />
-          Back
+        <button onClick={() => navigate('/')} className="mb-10 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-black/30 hover:text-black transition-colors group">
+          <ArrowLeft size={14} className="transition-transform group-hover:-translate-x-1" />
+          Return Home
         </button>
 
         <div className="mb-10">
-          <h1 className="font-display text-4xl font-bold tracking-tight text-black">Log <span className="text-brand-primary">In</span></h1>
-          <p className="mt-2 text-black/30 font-bold uppercase tracking-widest text-[10px]">Access your fitness partner</p>
+          <h1 className="font-display text-4xl font-bold tracking-tight text-black">Welcome <span className="text-brand-primary">Back</span></h1>
+          <p className="mt-2 text-black/30 font-bold uppercase tracking-widest text-[10px]">Continue your fitness journey</p>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="space-y-2">
-            <label className="text-xs font-bold uppercase tracking-widest text-black/30">Email Address</label>
-            <div className="relative">
-              <Mail className="absolute left-4 top-1/2 -translate-y-1/2 text-black/10" size={18} />
+            <label className="text-[10px] font-bold uppercase tracking-widest text-black/30 ml-1">Email Address</label>
+            <div className="relative group">
+              <Mail className="absolute left-5 top-1/2 -translate-y-1/2 text-black/10 transition-colors group-focus-within:text-brand-primary" size={18} />
               <input
                 type="email"
                 required
-                className="w-full rounded-2xl border border-black/5 bg-black/5 px-12 py-4 text-sm font-bold outline-none ring-brand-primary/20 transition-all focus:border-brand-primary focus:ring-4 text-black"
-                placeholder="username@fitai.com"
+                className="w-full rounded-[20px] border border-black/5 bg-black/[0.02] px-14 py-4 text-sm font-bold outline-none ring-brand-primary/20 transition-all focus:bg-white focus:border-brand-primary focus:ring-4 text-black placeholder:text-black/10"
+                placeholder="name@example.com"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               />
@@ -88,13 +90,13 @@ export default function Login() {
           </div>
 
           <div className="space-y-2">
-            <label className="text-xs font-bold uppercase tracking-widest text-black/30">Password</label>
-            <div className="relative">
-              <Lock className="absolute left-4 top-1/2 -translate-y-1/2 text-black/10" size={18} />
+            <label className="text-[10px] font-bold uppercase tracking-widest text-black/30 ml-1">Password</label>
+            <div className="relative group">
+              <Lock className="absolute left-5 top-1/2 -translate-y-1/2 text-black/10 transition-colors group-focus-within:text-brand-primary" size={18} />
               <input
                 type="password"
                 required
-                className="w-full rounded-2xl border border-black/5 bg-black/5 px-12 py-4 text-sm font-bold outline-none ring-brand-primary/20 transition-all focus:border-brand-primary focus:ring-4 text-black"
+                className="w-full rounded-[20px] border border-black/5 bg-black/[0.02] px-14 py-4 text-sm font-bold outline-none ring-brand-primary/20 transition-all focus:bg-white focus:border-brand-primary focus:ring-4 text-black placeholder:text-black/10"
                 placeholder="••••••••"
                 value={formData.password}
                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
@@ -104,17 +106,17 @@ export default function Login() {
 
           <button
             type="submit"
-            className="group relative h-14 w-full overflow-hidden rounded-2xl bg-black text-white font-bold transition-all active:scale-95"
+            className="group relative h-16 w-full overflow-hidden rounded-[20px] bg-black text-white font-bold transition-all active:scale-95 hover:bg-brand-primary hover:text-black shadow-xl shadow-black/10 hover:shadow-brand-primary/20"
           >
             <span className="flex items-center justify-center gap-2">
-              Login to FitAI <ShieldCheck size={18} />
+              Sign In <ShieldCheck size={18} className="transition-transform group-hover:scale-110" />
             </span>
           </button>
         </form>
 
-        <p className="mt-8 text-center text-sm text-black/40">
-          Don't have an account yet?{' '}
-          <Link to="/register" className="font-bold text-brand-primary hover:underline">Register</Link>
+        <p className="mt-10 text-center text-[11px] font-bold uppercase tracking-widest text-black/40">
+          New to FitAI?{' '}
+          <Link to="/register" className="text-brand-primary hover:underline underline-offset-4">Create Account</Link>
         </p>
       </motion.div>
     </div>
