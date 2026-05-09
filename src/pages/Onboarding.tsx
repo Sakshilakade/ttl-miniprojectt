@@ -34,11 +34,12 @@ export default function Onboarding() {
 
   const handleFinish = () => {
     if (!profile) return;
-    setProfile({
+    const finalProfile = {
       ...profile,
       ...formData,
-    });
-    generatePlan();
+    };
+    setProfile(finalProfile);
+    generatePlan(finalProfile);
     navigate('/dashboard');
   };
 

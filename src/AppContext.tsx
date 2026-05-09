@@ -5,9 +5,9 @@ import { generateMealPlan, generateWorkout } from './utils/aiGenerator';
 interface AppContextType extends AppState {
   setProfile: (profile: UserProfile | null) => void;
   updateDailyStats: (date: string, stats: Partial<DailyStats>) => void;
-  generatePlan: () => void;
-  generateMeals: () => void;
-  generateWorkouts: () => void;
+  generatePlan: (customProfile?: UserProfile) => void;
+  generateMeals: (customProfile?: UserProfile) => void;
+  generateWorkouts: (customProfile?: UserProfile) => void;
   logout: () => void;
 }
 
@@ -63,27 +63,30 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     });
   };
 
-  const generatePlan = () => {
-    if (!state.profile) return;
-    const mealPlan = generateMealPlan(state.profile);
-    const workout = generateWorkout(state.profile);
+  const generatePlan = (customProfile?: UserProfile) => {
+    const activeProfile = customProfile || state.profile;
+    if (!activeProfile) return;
+    const mealPlan = generateMealPlan(activeProfile);
+    const workout = generateWorkout(activeProfile);
     setState(prev => ({
       ...prev,
       currentMealPlan: mealPlan,
       currentWorkout: workout,
-      profile: prev.profile ? { ...prev.profile, onboardingComplete: true } : null
+      profile: activeProfile ? { ...activeProfile, onboardingComplete: true } : null
     }));
   };
 
-  const generateMeals = () => {
-    if (!state.profile) return;
-    const mealPlan = generateMealPlan(state.profile);
+  const generateMeals = (customProfile?: UserProfile) => {
+    const activeProfile = customProfile || state.profile;
+    if (!activeProfile) return;
+    const mealPlan = generateMealPlan(activeProfile);
     setState(prev => ({ ...prev, currentMealPlan: mealPlan }));
   };
 
-  const generateWorkouts = () => {
-    if (!state.profile) return;
-    const workout = generateWorkout(state.profile);
+  const generateWorkouts = (customProfile?: UserProfile) => {
+    const activeProfile = customProfile || state.profile;
+    if (!activeProfile) return;
+    const workout = generateWorkout(activeProfile);
     setState(prev => ({ ...prev, currentWorkout: workout }));
   };
 

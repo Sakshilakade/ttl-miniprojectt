@@ -179,10 +179,13 @@ const calculateCalories = (profile: UserProfile): number => {
 
 export const generateMealPlan = (profile: UserProfile): Meal[] => {
   const targetCalories = calculateCalories(profile);
-  const diet = profile.dietPreference;
+  const diet = profile.dietPreference || 'vegetarian';
+  
+  // Ensure the diet category exists in our data
+  const dietData = MEAL_DATA[diet] || MEAL_DATA['vegetarian'];
   
   const mealTypes = [
-    { name: 'Early Morning', time: profile.wakeupTime, weight: 0.05 },
+    { name: 'Early Morning', time: profile.wakeupTime || '07:00', weight: 0.05 },
     { name: 'Breakfast', time: '08:30', weight: 0.25 },
     { name: 'Mid Morning', time: '11:00', weight: 0.05 },
     { name: 'Lunch', time: '13:30', weight: 0.30 },
@@ -193,12 +196,12 @@ export const generateMealPlan = (profile: UserProfile): Meal[] => {
   ];
 
   return mealTypes.map((type) => {
-    const mealOptions = MEAL_DATA[diet][type.name] || ['Healthy Option'];
+    const mealOptions = dietData[type.name] || ['Healthy Nutritious Meal'];
     const mealName = getRandomElement(mealOptions);
     const mealCals = Math.round(targetCalories * type.weight);
     
     return {
-      id: Math.random().toString(36).substr(2, 9),
+      id: `meal-${Math.random().toString(36).substr(2, 9)}`,
       name: mealName,
       type: type.name,
       time: type.time,
@@ -206,7 +209,7 @@ export const generateMealPlan = (profile: UserProfile): Meal[] => {
       protein: Math.round((mealCals * 0.25) / 4),
       carbs: Math.round((mealCals * 0.45) / 4),
       fats: Math.round((mealCals * 0.3) / 9),
-      ingredients: ['Nutrient dense ingredients', 'Spices & Herbs', 'Healthy Fats']
+      ingredients: ['Fresh seasonal ingredients', 'Herbs & Spices', 'Healthy Fats']
     };
   });
 };

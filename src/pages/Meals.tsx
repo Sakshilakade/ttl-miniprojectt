@@ -36,11 +36,12 @@ export default function Meals() {
 
   const handleGenerate = () => {
     if (profile) {
-      setProfile({
+      const updatedProfile = {
         ...profile,
         ...tempData
-      });
-      generatePlan();
+      };
+      setProfile(updatedProfile);
+      generatePlan(updatedProfile);
       setIsGenerating(false);
     }
   };
