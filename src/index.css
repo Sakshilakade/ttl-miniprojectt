@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-primary: #a3e635; /* Vital Lime */
+  --color-brand-secondary: #fbcfe8; /* Baby Pink */
+  --color-brand-pink: #fbcfe8;
+  --color-brand-lime: #a3e635;
+  --color-app-bg: #f8f9fa; /* Newer Clean background */
+  --color-app-surface: #ffffff; /* Clean White Card */
+  --color-glass: rgba(255, 255, 255, 0.8);
+  --color-glass-border: rgba(0, 0, 0, 0.05);
+  
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-app-bg text-black font-sans antialiased selection:bg-brand-primary selection:text-black;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white shadow-sm border border-black/5 rounded-[32px] overflow-hidden;
+  }
+  
+  .glow-button {
+    @apply relative overflow-hidden transition-all duration-300 active:scale-95 rounded-2xl;
+  }
+  
+  .glow-button::after {
+    @apply content-[''] absolute inset-0 opacity-0 transition-opacity duration-300;
+  }
+  
+  .glow-button:hover::after {
+    @apply opacity-100;
+  }
+
+  .premium-gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-black to-black/60;
+  }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-glow-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  @apply bg-transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-white/10 rounded-full hover:bg-white/20 transition-colors;
+}

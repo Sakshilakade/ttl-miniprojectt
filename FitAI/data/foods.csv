@@ -1,0 +1,46 @@
+name,meal,diet,calories,protein,carbs,fats
+Oats with Banana Shake,breakfast,Veg,350,12,55,8
+Vegetable Poha,breakfast,Veg,300,7,50,8
+Masala Dosa,breakfast,Veg,380,9,55,12
+Idli Sambar,breakfast,Veg,280,10,48,5
+Vegetable Upma,breakfast,Veg,320,8,52,9
+Paneer Sandwich,breakfast,Veg,400,15,45,18
+Peanut Butter Toast,breakfast,Veg,350,12,40,15
+Boiled Eggs with Toast,breakfast,NonVeg,320,20,28,14
+Chicken Sandwich,breakfast,NonVeg,420,28,38,16
+Omelette with Veggies,breakfast,NonVeg,300,22,8,18
+Fruit Bowl,mid_morning,Veg,180,3,42,1
+Mixed Dry Fruits,mid_morning,Veg,220,7,22,14
+Greek Yogurt with Honey,mid_morning,Veg,200,12,28,5
+Banana Smoothie,mid_morning,Veg,250,8,45,5
+Apple with Peanut Butter,mid_morning,Veg,230,7,28,11
+Boiled Egg,mid_morning,NonVeg,80,7,1,5
+Paneer Rice with Salad,lunch,Veg,600,22,70,22
+Rajma Chawal,lunch,Veg,580,20,85,12
+Chole with Roti,lunch,Veg,520,18,75,14
+Veg Biryani with Raita,lunch,Veg,620,15,90,20
+Dal Tadka with Rice,lunch,Veg,500,18,75,12
+Mixed Veg Thali,lunch,Veg,560,18,80,16
+Chicken Rice with Salad,lunch,NonVeg,650,40,70,18
+Grilled Chicken with Quinoa,lunch,NonVeg,580,45,55,15
+Fish Curry with Rice,lunch,NonVeg,600,38,65,18
+Egg Curry with Roti,lunch,NonVeg,520,28,55,20
+Sprouts Salad,evening,Veg,180,12,25,4
+Roasted Chana,evening,Veg,200,11,30,5
+Vegetable Sandwich,evening,Veg,300,10,40,12
+Peanut Butter Sandwich,evening,Veg,320,12,38,14
+Hummus with Carrots,evening,Veg,220,8,25,11
+Boiled Egg Salad,evening,NonVeg,250,18,10,15
+Chapati with Paneer Curry,dinner,Veg,500,22,55,20
+Khichdi with Curd,dinner,Veg,450,16,68,12
+Veg Pulao with Salad,dinner,Veg,520,14,75,18
+Dal with Roti and Sabzi,dinner,Veg,480,18,65,15
+Tofu Stir Fry with Rice,dinner,Veg,500,24,55,18
+Chicken with Chapati and Salad,dinner,NonVeg,550,42,45,18
+Grilled Fish with Veggies,dinner,NonVeg,480,40,25,20
+Egg Bhurji with Roti,dinner,NonVeg,460,26,45,18
+Warm Milk with Turmeric,night,Veg,150,7,15,6
+Banana Milkshake,night,Veg,250,8,40,7
+Almond Milk Smoothie,night,Veg,180,5,22,8
+Cottage Cheese Bowl,night,Veg,220,18,10,12
+Greek Yogurt,night,Veg,150,12,12,5
