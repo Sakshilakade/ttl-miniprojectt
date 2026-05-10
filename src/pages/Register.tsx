@@ -29,6 +29,8 @@ export default function Register() {
       goal: 'maintenance',
       dietPreference: 'vegetarian',
       workoutPreference: 'home workout',
+      workoutFocusArea: 'Full Body',
+      workoutDuration: '45 mins',
       wakeupTime: '07:00',
       sleepTime: '23:00',
       workoutTime: '18:00',
@@ -40,7 +42,7 @@ export default function Register() {
   };
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center bg-white p-6 selection:bg-brand-primary selection:text-black overflow-y-auto">
+    <div className="relative flex min-h-screen items-center justify-center bg-[#f8f8f5] p-6 selection:bg-brand-primary selection:text-black overflow-y-auto">
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
         <div className="absolute top-[-10%] left-[-10%] w-[50%] h-[50%] rounded-full bg-brand-primary/5 blur-[120px]" />
         <div className="absolute bottom-[-10%] right-[-10%] w-[50%] h-[50%] rounded-full bg-brand-primary/10 blur-[120px]" />
@@ -49,7 +51,7 @@ export default function Register() {
       <motion.div
         initial={{ opacity: 0, scale: 0.95 }}
         animate={{ opacity: 1, scale: 1 }}
-        className="relative z-10 w-full max-w-md p-10 bg-white rounded-[40px] border border-black/5 shadow-2xl shadow-black/5 my-10"
+        className="relative z-10 w-full max-w-md p-10 bg-white rounded-[40px] border border-black/5 shadow-2xl shadow-neutral-200/70 my-10"
       >
         <button onClick={() => navigate('/')} className="mb-10 flex items-center gap-2 text-[10px] font-bold uppercase tracking-widest text-black/30 hover:text-black transition-colors group">
           <ArrowLeft size={14} className="transition-transform group-hover:-translate-x-1" />
@@ -69,7 +71,7 @@ export default function Register() {
               <input
                 type="text"
                 required
-                className="w-full rounded-[20px] border border-black/5 bg-black/[0.02] px-14 py-4 text-sm font-bold outline-none ring-brand-primary/20 transition-all focus:bg-white focus:border-brand-primary focus:ring-4 text-black placeholder:text-black/10"
+                className="w-full rounded-[20px] border border-black/5 bg-[#f8f8f5] px-14 py-4 text-sm font-bold outline-none ring-brand-primary/20 transition-all focus:bg-white focus:border-brand-primary focus:ring-4 text-black placeholder:text-black/20"
                 placeholder="Sakshi"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
@@ -84,7 +86,7 @@ export default function Register() {
               <input
                 type="email"
                 required
-                className="w-full rounded-[20px] border border-black/5 bg-black/[0.02] px-14 py-4 text-sm font-bold outline-none ring-brand-primary/20 transition-all focus:bg-white focus:border-brand-primary focus:ring-4 text-black placeholder:text-black/10"
+                className="w-full rounded-[20px] border border-black/5 bg-[#f8f8f5] px-14 py-4 text-sm font-bold outline-none ring-brand-primary/20 transition-all focus:bg-white focus:border-brand-primary focus:ring-4 text-black placeholder:text-black/20"
                 placeholder="john@fitai.com"
                 value={formData.email}
                 onChange={(e) => setFormData({ ...formData, email: e.target.value })}
@@ -96,7 +98,7 @@ export default function Register() {
             <div className="space-y-2">
               <label className="text-[10px] font-bold uppercase tracking-widest text-black/30 ml-1">Gender</label>
               <select
-                className="w-full appearance-none rounded-[20px] border border-black/5 bg-black/[0.02] px-5 py-4 text-sm font-bold outline-none ring-brand-primary/20 transition-all focus:bg-white focus:border-brand-primary focus:ring-4 text-black"
+                className="w-full appearance-none rounded-[20px] border border-black/5 bg-[#f8f8f5] px-5 py-4 text-sm font-bold outline-none ring-brand-primary/20 transition-all focus:bg-white focus:border-brand-primary focus:ring-4 text-black"
                 value={formData.gender}
                 onChange={(e) => setFormData({ ...formData, gender: e.target.value })}
               >
@@ -110,7 +112,7 @@ export default function Register() {
               <input
                 type="number"
                 required
-                className="w-full rounded-[20px] border border-black/5 bg-black/[0.02] px-5 py-4 text-sm font-bold outline-none ring-brand-primary/20 transition-all focus:bg-white focus:border-brand-primary focus:ring-4 text-black"
+                className="w-full rounded-[20px] border border-black/5 bg-[#f8f8f5] px-5 py-4 text-sm font-bold outline-none ring-brand-primary/20 transition-all focus:bg-white focus:border-brand-primary focus:ring-4 text-black"
                 value={formData.age}
                 onChange={(e) => setFormData({ ...formData, age: parseInt(e.target.value) })}
               />
@@ -124,7 +126,7 @@ export default function Register() {
               <input
                 type="password"
                 required
-                className="w-full rounded-[20px] border border-black/5 bg-black/[0.02] px-14 py-4 text-sm font-bold outline-none ring-brand-primary/20 transition-all focus:bg-white focus:border-brand-primary focus:ring-4 text-black placeholder:text-black/10"
+                className="w-full rounded-[20px] border border-black/5 bg-[#f8f8f5] px-14 py-4 text-sm font-bold outline-none ring-brand-primary/20 transition-all focus:bg-white focus:border-brand-primary focus:ring-4 text-black placeholder:text-black/20"
                 placeholder="••••••••"
                 value={formData.password}
                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
@@ -134,7 +136,7 @@ export default function Register() {
 
           <button
             type="submit"
-            className="group relative h-16 w-full overflow-hidden rounded-[20px] bg-black text-white font-bold transition-all active:scale-95 hover:bg-brand-primary hover:text-black shadow-xl shadow-black/10 hover:shadow-brand-primary/20 mt-4"
+            className="group relative h-16 w-full overflow-hidden rounded-[20px] bg-brand-primary text-black font-bold transition-all active:scale-95 hover:bg-brand-primary/90 shadow-xl shadow-brand-primary/20 hover:shadow-brand-primary/30 mt-4"
           >
             <span className="flex items-center justify-center gap-2">
               Create Account <Sparkles size={18} className="transition-transform group-hover:scale-110" />

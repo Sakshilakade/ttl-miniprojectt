@@ -66,7 +66,7 @@ export default function Meals() {
                   <label className="text-xs font-bold uppercase tracking-widest text-black/30">Your Age</label>
                   <input
                     type="number"
-                    className="w-full rounded-2xl border border-black/5 bg-black/5 p-5 font-bold outline-none focus:border-brand-pink"
+                    className="w-full rounded-2xl border border-black/5 bg-[#f8f8f5] p-5 font-bold outline-none focus:border-brand-pink"
                     placeholder="Enter age"
                     value={tempData.age}
                     onChange={(e) => setTempData({...tempData, age: parseInt(e.target.value)})}
@@ -76,7 +76,7 @@ export default function Meals() {
                   <label className="text-xs font-bold uppercase tracking-widest text-black/30">Height (cm)</label>
                   <input
                     type="number"
-                    className="w-full rounded-2xl border border-black/5 bg-black/5 p-5 font-bold outline-none focus:border-brand-pink"
+                    className="w-full rounded-2xl border border-black/5 bg-[#f8f8f5] p-5 font-bold outline-none focus:border-brand-pink"
                     placeholder="Enter height"
                     value={tempData.height}
                     onChange={(e) => setTempData({...tempData, height: parseInt(e.target.value)})}
@@ -86,13 +86,13 @@ export default function Meals() {
                   <label className="text-xs font-bold uppercase tracking-widest text-black/30">Weight (kg)</label>
                   <input
                     type="number"
-                    className="w-full rounded-2xl border border-black/5 bg-black/5 p-5 font-bold outline-none focus:border-brand-pink"
+                    className="w-full rounded-2xl border border-black/5 bg-[#f8f8f5] p-5 font-bold outline-none focus:border-brand-pink"
                     placeholder="Enter weight"
                     value={tempData.weight}
                     onChange={(e) => setTempData({...tempData, weight: parseInt(e.target.value)})}
                   />
                 </div>
-                <button onClick={() => setStep(2)} className="flex h-16 w-full items-center justify-center gap-2 rounded-2xl bg-black font-bold text-white transition-all hover:scale-[1.02]">
+                <button onClick={() => setStep(2)} className="flex h-16 w-full items-center justify-center gap-2 rounded-2xl bg-brand-primary font-bold text-black transition-all hover:scale-[1.02] shadow-lg shadow-brand-primary/20">
                   Next <ArrowRight size={20} />
                 </button>
              </motion.div>
@@ -109,7 +109,7 @@ export default function Meals() {
                         onClick={() => setTempData({...tempData, dietPreference: p as any})}
                         className={cn(
                           "flex h-14 items-center justify-between rounded-xl px-6 font-bold transition-all",
-                          tempData.dietPreference === p ? "bg-brand-pink text-black" : "bg-black/5 text-black/40"
+                          tempData.dietPreference === p ? "bg-brand-pink text-black" : "bg-[#f8f8f5] text-black/40"
                         )}
                       >
                         <span className="capitalize">{p.replace('-', ' ')}</span>
@@ -120,7 +120,7 @@ export default function Meals() {
                 </div>
                 <div className="flex gap-4">
                   <button onClick={() => setStep(1)} className="h-16 flex-1 rounded-2xl border border-black/5 font-bold text-black/40">Back</button>
-                  <button onClick={() => setStep(3)} className="h-16 flex-2 rounded-2xl bg-black font-bold text-white">Next</button>
+                  <button onClick={() => setStep(3)} className="h-16 flex-2 rounded-2xl bg-brand-primary font-bold text-black shadow-lg shadow-brand-primary/20">Next</button>
                 </div>
              </motion.div>
            )}
@@ -130,11 +130,11 @@ export default function Meals() {
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
                     <label className="text-xs font-bold uppercase tracking-widest text-black/30">Wakeup</label>
-                    <input type="time" className="w-full rounded-xl bg-black/5 p-4 font-bold" value={tempData.wakeupTime} onChange={(e) => setTempData({...tempData, wakeupTime: e.target.value})} />
+                    <input type="time" className="w-full rounded-xl bg-[#f8f8f5] p-4 font-bold" value={tempData.wakeupTime} onChange={(e) => setTempData({...tempData, wakeupTime: e.target.value})} />
                   </div>
                   <div className="space-y-2">
                     <label className="text-xs font-bold uppercase tracking-widest text-black/30">Sleep</label>
-                    <input type="time" className="w-full rounded-xl bg-black/5 p-4 font-bold" value={tempData.sleepTime} onChange={(e) => setTempData({...tempData, sleepTime: e.target.value})} />
+                    <input type="time" className="w-full rounded-xl bg-[#f8f8f5] p-4 font-bold" value={tempData.sleepTime} onChange={(e) => setTempData({...tempData, sleepTime: e.target.value})} />
                   </div>
                 </div>
                 <div className="flex gap-4">
@@ -190,7 +190,7 @@ export default function Meals() {
           
           <button 
             onClick={() => setIsGenerating(true)}
-            className="flex h-14 items-center gap-2 rounded-2xl bg-black px-8 font-bold text-white transition-all hover:scale-105 active:scale-95 shadow-lg shadow-black/10"
+            className="flex h-14 items-center gap-2 rounded-2xl bg-brand-primary px-8 font-bold text-black transition-all hover:scale-105 active:scale-95 shadow-lg shadow-brand-primary/20"
           >
             <Settings size={20} />
             Plan Settings
@@ -207,7 +207,7 @@ export default function Meals() {
           { label: 'Fats', value: currentMealPlan?.reduce((acc, m) => acc + m.fats, 0), unit: 'g', icon: Droplets, color: 'text-purple-400' }
         ].map((s, i) => (
           <div key={i} className="glass-card flex flex-col p-6 bg-white border border-black/5 shadow-sm">
-            <div className={`mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-black/5 ${s.color}`}>
+            <div className={`mb-3 flex h-10 w-10 items-center justify-center rounded-xl bg-[#f8f8f5] ${s.color}`}>
               <s.icon size={20} />
             </div>
             <p className="text-[10px] font-bold uppercase tracking-widest text-black/20">{s.label}</p>
@@ -218,7 +218,7 @@ export default function Meals() {
 
       {/* Meals Timeline */}
       <section className="relative space-y-6">
-        <div className="absolute left-8 top-0 h-full w-px bg-gradient-to-b from-brand-primary/50 via-black/5 to-transparent" />
+        <div className="absolute left-8 top-0 h-full w-px bg-gradient-to-b from-brand-primary/50 via-[#e8e8df] to-transparent" />
         
         {currentMealPlan?.map((meal, i) => (
           <motion.div
@@ -235,7 +235,7 @@ export default function Meals() {
               <div className="glass-card group flex flex-col overflow-hidden transition-all md:flex-row bg-white border border-black/5 shadow-sm">
                 <div className="flex flex-1 flex-col p-6 md:p-8">
                   <div className="mb-4 flex items-center justify-between">
-                    <div className="flex items-center gap-2 rounded-full bg-black/5 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-black/40">
+                    <div className="flex items-center gap-2 rounded-full bg-[#f8f8f5] px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-black/40">
                       <Clock size={12} />
                       {meal.time}
                     </div>

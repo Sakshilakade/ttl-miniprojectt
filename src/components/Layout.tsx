@@ -57,7 +57,7 @@ export const Layout = ({ children }: { children: ReactNode }) => {
                   "group flex w-full items-center gap-3 rounded-2xl px-4 py-3 text-sm font-bold transition-all duration-300",
                   isActive 
                     ? "bg-brand-primary/10 text-black" 
-                    : "text-black/50 hover:bg-black/5 hover:text-black"
+                    : "text-black/50 hover:bg-[#f8f8f5] hover:text-black"
                 )}
               >
                 <Icon size={20} className={cn(isActive ? "text-brand-primary" : "text-black/30 group-hover:text-black")} />

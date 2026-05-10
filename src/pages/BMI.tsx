@@ -54,7 +54,7 @@ export default function BMICalculator() {
       case 'Healthy': return 'text-brand-primary bg-brand-primary/10';
       case 'Overweight': return 'text-orange-400 bg-orange-50';
       case 'Obese': return 'text-red-400 bg-red-50';
-      default: return 'text-black/40 bg-black/5';
+      default: return 'text-black/40 bg-[#f8f8f5]';
     }
   };
 
@@ -105,7 +105,7 @@ export default function BMICalculator() {
                         key={g}
                         onClick={() => setGender(g)}
                         className={`flex-1 h-12 rounded-xl border text-xs font-bold uppercase transition-all ${
-                          gender === g ? 'border-brand-primary bg-brand-primary/10 text-black' : 'border-black/5 bg-black/5 text-black/40'
+                          gender === g ? 'border-brand-primary bg-brand-primary/10 text-black' : 'border-black/5 bg-[#f8f8f5] text-black/40'
                         }`}
                       >
                         {g}
@@ -119,7 +119,7 @@ export default function BMICalculator() {
                    <User2 size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-black/20" />
                    <input
                      type="number"
-                     className="w-full rounded-xl border border-black/5 bg-black/5 py-3 pl-12 pr-4 text-sm font-bold outline-none focus:border-brand-primary transition-all text-black"
+                     className="w-full rounded-xl border border-black/5 bg-[#f8f8f5] py-3 pl-12 pr-4 text-sm font-bold outline-none focus:border-brand-primary transition-all text-black"
                      placeholder="25"
                      value={age}
                      onChange={(e) => setAge(e.target.value)}
@@ -137,7 +137,7 @@ export default function BMICalculator() {
                 <Ruler size={18} className="absolute left-4 text-black/20" />
                 <input
                   type="range" min="100" max="250"
-                  className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-black/5 accent-brand-primary"
+                  className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-[#f8f8f5] accent-brand-primary"
                   value={height}
                   onChange={(e) => setHeight(e.target.value)}
                 />
@@ -153,7 +153,7 @@ export default function BMICalculator() {
                 <Scale size={18} className="absolute left-4 text-black/20" />
                 <input
                   type="range" min="30" max="200" step="0.5"
-                  className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-black/5 accent-brand-primary"
+                  className="h-2 w-full cursor-pointer appearance-none rounded-lg bg-[#f8f8f5] accent-brand-primary"
                   value={weight}
                   onChange={(e) => setWeight(e.target.value)}
                 />
@@ -180,7 +180,7 @@ export default function BMICalculator() {
                 exit={{ opacity: 0, scale: 0.95 }}
                 className="glass-card flex flex-1 flex-col items-center justify-center p-10 text-center bg-white border border-black/5"
               >
-                <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-black/5 text-black/10">
+                <div className="mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-[#f8f8f5] text-black/10">
                    <Scale size={40} />
                 </div>
                 <h3 className="font-display text-2xl font-bold text-black/40">Enter details to see results</h3>
@@ -204,7 +204,7 @@ export default function BMICalculator() {
 
                 {/* BMI Meter */}
                 <div className="px-10 py-10">
-                   <div className="relative h-3 w-full rounded-full bg-black/5 overflow-hidden">
+                   <div className="relative h-3 w-full rounded-full bg-[#f8f8f5] overflow-hidden">
                       <div className="absolute inset-0 flex">
                          <div className="h-full w-[18.5%] bg-blue-300" />
                          <div className="h-full w-[6.5%] bg-brand-primary" />
@@ -216,7 +216,7 @@ export default function BMICalculator() {
                         animate={{ left: `${getMeterPosition(result.bmi)}%` }}
                         className="absolute top-0 flex h-full -translate-x-1/2 items-center justify-center"
                       >
-                         <div className="h-full w-1.5 bg-black" />
+                         <div className="h-full w-1.5 bg-brand-primary" />
                       </motion.div>
                    </div>
                    <div className="mt-4 flex justify-between text-[8px] font-bold uppercase tracking-widest text-black/30">
@@ -228,7 +228,7 @@ export default function BMICalculator() {
                    </div>
                 </div>
 
-                <div className="mt-auto border-t border-black/5 bg-black/5 p-8 text-center">
+                <div className="mt-auto border-t border-black/5 bg-[#f8f8f5] p-8 text-center">
                    <p className="text-sm font-medium leading-relaxed text-black/60 italic">
                       "{getSuggestion(result.category)}"
                    </p>
@@ -245,7 +245,7 @@ export default function BMICalculator() {
 
           <div className="glass-card bg-white p-6 border border-black/5">
             <div className="flex items-center gap-3">
-               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-black/5 text-black/30">
+               <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#f8f8f5] text-black/30">
                   <Info size={16} />
                </div>
                <h4 className="text-sm font-bold text-black">What is BMI?</h4>

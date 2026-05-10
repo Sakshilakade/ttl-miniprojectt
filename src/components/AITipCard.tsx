@@ -37,7 +37,7 @@ export default function AITipCard({ tip, onRefresh }: AITipCardProps) {
     >
       <div className="flex items-start justify-between">
         <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-black/5 text-black">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#f8f8f5] text-black">
             {getIcon()}
           </div>
           <div>
@@ -53,7 +53,7 @@ export default function AITipCard({ tip, onRefresh }: AITipCardProps) {
         {onRefresh && (
           <button 
             onClick={onRefresh}
-            className="rounded-lg p-2 text-black/10 transition-colors hover:bg-black/5 hover:text-black"
+            className="rounded-lg p-2 text-black/20 transition-colors hover:bg-[#f8f8f5] hover:text-black"
           >
             <Sparkles size={16} />
           </button>

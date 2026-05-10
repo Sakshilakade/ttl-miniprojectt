@@ -83,7 +83,7 @@ export default function Dashboard() {
       desc: 'See your exercises for today',
       icon: Layout,
       path: '/workout',
-      color: 'bg-black/5',
+      color: 'bg-[#f8f8f5]',
       textColor: 'text-black',
       iconColor: 'text-brand-primary'
     },
@@ -103,7 +103,7 @@ export default function Dashboard() {
       desc: 'Log your weight and see your journey',
       icon: TrendingUp,
       path: '/progress',
-      color: 'bg-black/5',
+      color: 'bg-[#f8f8f5]',
       textColor: 'text-black',
       iconColor: 'text-brand-primary'
     }
@@ -150,7 +150,7 @@ export default function Dashboard() {
               </div>
            </div>
            
-           <div className="mb-8 h-2.5 rounded-full bg-black/5 overflow-hidden">
+           <div className="mb-8 h-2.5 rounded-full bg-[#f8f8f5] overflow-hidden">
               <motion.div 
                 initial={{ width: 0 }}
                 animate={{ width: `${completionRate}%` }}
@@ -165,11 +165,11 @@ export default function Dashboard() {
                      autoFocus
                      type="text" 
                      placeholder="What's your goal?"
-                     className="flex-1 rounded-2xl border border-black/10 bg-black/5 px-4 py-4 font-bold outline-none focus:border-brand-primary text-black"
+                     className="flex-1 rounded-2xl border border-black/10 bg-[#f8f8f5] px-4 py-4 font-bold outline-none focus:border-brand-primary text-black"
                      value={newGoal}
                      onChange={(e) => setNewGoal(e.target.value)}
                    />
-                   <button type="submit" className="rounded-2xl bg-black px-6 font-bold text-white transition-all active:scale-95 shadow-lg shadow-black/20">Add</button>
+                   <button type="submit" className="rounded-2xl bg-brand-primary px-6 font-bold text-black transition-all active:scale-95 shadow-lg shadow-brand-primary/20">Add</button>
                    <button type="button" onClick={() => setIsAdding(false)} className="px-2 text-black/40 hover:text-red-500 transition-colors"><X size={20} /></button>
                 </form>
               )}
@@ -178,7 +178,7 @@ export default function Dashboard() {
                   key={goal.id}
                   onClick={(e) => toggleGoal(goal.id, e)}
                   className={`flex w-full items-center justify-between rounded-2xl border p-5 transition-all group/goal cursor-pointer ${
-                    goal.completed ? 'border-brand-primary/20 bg-brand-primary/5' : 'border-black/5 bg-black/5 hover:border-black/10'
+                    goal.completed ? 'border-brand-primary/20 bg-brand-primary/5' : 'border-black/5 bg-[#f8f8f5] hover:border-black/10'
                   }`}
                 >
                   <div className="flex items-center gap-4">
@@ -213,7 +213,7 @@ export default function Dashboard() {
                onClick={() => navigate(feature.path)}
                className={`glass-card flex p-8 text-left transition-all hover:scale-[1.01] active:scale-[0.98] border border-black/5 shadow-sm group relative overflow-hidden`}
              >
-                <div className={`mr-6 flex h-16 w-16 shrink-0 items-center justify-center rounded-[24px] ${feature.color} ${feature.iconColor} shadow-lg shadow-black/5 group-hover:scale-110 transition-transform`}>
+                <div className={`mr-6 flex h-16 w-16 shrink-0 items-center justify-center rounded-[24px] ${feature.color} ${feature.iconColor} shadow-lg shadow-neutral-200/60 group-hover:scale-110 transition-transform`}>
                    <feature.icon size={32} />
                 </div>
                 <div className="flex flex-col justify-center">

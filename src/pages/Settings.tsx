@@ -54,7 +54,7 @@ export default function Settings() {
            <div className="mb-10 flex items-center gap-6">
               <div className="h-24 w-24 rounded-full bg-gradient-to-br from-brand-primary to-brand-primary/40 p-1">
                  <div className="h-full w-full rounded-full bg-white p-1">
-                    <div className="h-full w-full rounded-full bg-black/5 flex items-center justify-center text-brand-primary">
+                    <div className="h-full w-full rounded-full bg-[#f8f8f5] flex items-center justify-center text-brand-primary">
                        <User size={40} />
                     </div>
                  </div>
@@ -76,7 +76,7 @@ export default function Settings() {
                      <p className="text-sm font-medium text-black/40">{profile.email}</p>
                    </>
                  )}
-                 <div className="mt-3 inline-flex items-center gap-2 rounded-full bg-black/5 px-4 py-1 text-[10px] font-bold uppercase tracking-widest text-black/60">
+                 <div className="mt-3 inline-flex items-center gap-2 rounded-full bg-[#f8f8f5] px-4 py-1 text-[10px] font-bold uppercase tracking-widest text-black/60">
                     <Shield size={12} /> Personal Profile
                  </div>
               </div>
@@ -87,7 +87,7 @@ export default function Settings() {
                  <label className="text-xs font-bold uppercase tracking-widest text-black/30">Email Address</label>
                  <input
                    type="email"
-                   className="w-full rounded-2xl border border-black/5 bg-black/5 p-4 text-sm font-medium text-black/40 cursor-not-allowed"
+                   className="w-full rounded-2xl border border-black/5 bg-[#f8f8f5] p-4 text-sm font-medium text-black/40 cursor-not-allowed"
                    value={profile.email}
                    readOnly
                  />
@@ -98,7 +98,7 @@ export default function Settings() {
                    <select
                      disabled={!isEditing}
                      className={`w-full appearance-none rounded-2xl border p-4 text-sm font-medium transition-all text-black outline-none ${
-                       isEditing ? 'border-brand-primary bg-brand-primary/5' : 'border-black/5 bg-black/5 text-black/40'
+                       isEditing ? 'border-brand-primary bg-brand-primary/5' : 'border-black/5 bg-[#f8f8f5] text-black/40'
                      }`}
                      value={editForm.goal}
                      onChange={(e) => setEditForm({ ...editForm, goal: e.target.value as any })}
@@ -116,7 +116,7 @@ export default function Settings() {
                    <select
                      disabled={!isEditing}
                      className={`w-full appearance-none rounded-2xl border p-4 text-sm font-medium transition-all text-black outline-none ${
-                       isEditing ? 'border-brand-primary bg-brand-primary/5' : 'border-black/5 bg-black/5 text-black/40'
+                       isEditing ? 'border-brand-primary bg-brand-primary/5' : 'border-black/5 bg-[#f8f8f5] text-black/40'
                      }`}
                      value={editForm.experienceLevel}
                      onChange={(e) => setEditForm({ ...editForm, experienceLevel: e.target.value as any })}
@@ -134,7 +134,7 @@ export default function Settings() {
                    <select
                      disabled={!isEditing}
                      className={`w-full appearance-none rounded-2xl border p-4 text-sm font-medium transition-all text-black outline-none ${
-                       isEditing ? 'border-brand-primary bg-brand-primary/5' : 'border-black/5 bg-black/5 text-black/40'
+                       isEditing ? 'border-brand-primary bg-brand-primary/5' : 'border-black/5 bg-[#f8f8f5] text-black/40'
                      }`}
                      value={editForm.dietPreference}
                      onChange={(e) => setEditForm({ ...editForm, dietPreference: e.target.value as any })}
@@ -153,7 +153,7 @@ export default function Settings() {
              <div className="mt-10 flex gap-4">
                <button
                  onClick={handleCancel}
-                 className="flex h-14 flex-1 items-center justify-center gap-2 rounded-2xl border border-black/5 font-bold text-black/40 transition-all hover:bg-black/5"
+                 className="flex h-14 flex-1 items-center justify-center gap-2 rounded-2xl border border-black/5 font-bold text-black/40 transition-all hover:bg-[#f8f8f5]"
                >
                  <X size={20} />
                  Cancel
@@ -173,7 +173,7 @@ export default function Settings() {
            <div className="glass-card p-8 bg-white border border-black/5 shadow-sm">
               <h3 className="font-display text-xl font-bold mb-6 text-black">Insights</h3>
               <div className="space-y-4">
-                 <div className="flex items-center gap-4 rounded-2xl bg-black/5 p-4">
+                 <div className="flex items-center gap-4 rounded-2xl bg-[#f8f8f5] p-4">
                     <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-primary/10 text-brand-primary">
                        <Utensils size={20} />
                     </div>
@@ -182,7 +182,7 @@ export default function Settings() {
                        <p className="text-sm font-bold text-black">{profile.dietPreference}</p>
                     </div>
                  </div>
-                 <div className="flex items-center gap-4 rounded-2xl bg-black/5 p-4">
+                 <div className="flex items-center gap-4 rounded-2xl bg-[#f8f8f5] p-4">
                     <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-blue-500/10 text-blue-500">
                        <Dumbbell size={20} />
                     </div>
@@ -207,7 +207,7 @@ export default function Settings() {
            <div className="glass-card p-8 bg-white border border-black/5 shadow-sm">
               <h3 className="font-display text-xl font-bold mb-4 text-black">App Info</h3>
               <div className="flex items-center gap-3">
-                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-black/5 text-black/40">
+                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#f8f8f5] text-black/40">
                     <span className="text-[10px] font-bold">Fit</span>
                  </div>
                  <div>

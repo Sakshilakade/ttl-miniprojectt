@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'motion/react';
-import { Target, Zap, Shield, ChevronRight, Sparkles } from 'lucide-react';
+import { Target, Zap, Shield, Sparkles } from 'lucide-react';
 
 export default function Landing() {
   const navigate = useNavigate();
@@ -14,7 +14,7 @@ export default function Landing() {
       <nav className="container mx-auto flex h-24 items-center justify-between px-6 relative z-10 border-b border-black/5">
         <div className="flex items-center gap-2">
           <div className="h-10 w-10 rounded-xl bg-brand-primary p-0.5 shadow-lg shadow-brand-primary/20">
-            <div className="flex h-full w-full items-center justify-center rounded-[10px] bg-black">
+            <div className="flex h-full w-full items-center justify-center rounded-[10px] bg-white">
               <Zap size={20} className="text-brand-primary" fill="currentColor" />
             </div>
           </div>
@@ -29,14 +29,14 @@ export default function Landing() {
           </button>
           <button
             onClick={() => navigate('/register')}
-            className="rounded-full bg-black px-6 py-2.5 text-xs font-bold uppercase tracking-widest text-white transition-all hover:bg-brand-primary hover:text-black active:scale-95 shadow-lg shadow-black/5"
+            className="rounded-full bg-brand-primary px-6 py-2.5 text-xs font-bold uppercase tracking-widest text-black transition-all hover:bg-brand-primary/90 active:scale-95 shadow-lg shadow-brand-primary/20"
           >
             Get Started
           </button>
         </div>
       </nav>
 
-      <main className="container mx-auto flex flex-col items-center justify-center px-6 py-24 text-center relative z-10">
+      <main className="container mx-auto flex flex-col items-center justify-center px-6 py-16 text-center relative z-10 md:py-20">
         <motion.div
            initial={{ opacity: 0, y: 30 }}
            animate={{ opacity: 1, y: 0 }}
@@ -73,26 +73,10 @@ export default function Landing() {
           <p className="mx-auto max-w-xl text-lg text-black/40 md:text-xl font-medium leading-relaxed">
             Personalized meal plans and workouts tailored to your unique biology and lifestyle.
           </p>
-
-          <div className="mt-14 flex flex-col items-center justify-center gap-6 sm:flex-row">
-            <button
-              onClick={() => navigate('/register')}
-              className="group relative flex h-16 w-full items-center justify-center gap-3 overflow-hidden rounded-[24px] bg-brand-primary px-10 font-bold text-black transition-all hover:scale-105 active:scale-95 sm:w-auto shadow-xl shadow-brand-primary/10 hover:shadow-brand-primary/30"
-            >
-              Start Free Trial
-              <ChevronRight size={20} className="transition-transform group-hover:translate-x-1" />
-            </button>
-            <button
-              onClick={() => navigate('/login')}
-              className="flex h-16 w-full items-center justify-center rounded-[24px] border border-black/5 bg-white px-10 font-bold tracking-tight text-black transition-all hover:bg-black/5 sm:w-auto shadow-sm"
-            >
-              Watch Demo
-            </button>
-          </div>
         </motion.div>
 
         {/* Feature Grid */}
-        <div className="mt-40 grid grid-cols-1 gap-10 md:grid-cols-3 w-full max-w-6xl">
+        <div className="mt-24 grid grid-cols-1 gap-10 md:mt-28 md:grid-cols-3 w-full max-w-6xl">
           {[
             { icon: Target, title: "Precision Goals", desc: "Scientific approach to habit building and daily tracking.", color: "bg-brand-primary/10" },
             { icon: Zap, title: "Smart Nutrition", desc: "AI-generated meal plans that adapt to your taste and nutritional needs.", color: "bg-brand-primary/10" },
@@ -104,7 +88,7 @@ export default function Landing() {
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
               key={i}
-              className="group flex flex-col items-start p-10 text-left bg-white border border-black/5 rounded-[40px] shadow-xl shadow-black/5 transition-all hover:border-brand-primary/30 hover:-translate-y-2"
+              className="group flex flex-col items-start p-10 text-left bg-white border border-black/5 rounded-[40px] shadow-xl shadow-neutral-200/60 transition-all hover:border-brand-primary/30 hover:-translate-y-2"
             >
               <div className={`mb-8 flex h-16 w-16 items-center justify-center rounded-2xl ${feature.color} text-brand-primary transition-transform group-hover:scale-110`}>
                 <feature.icon size={28} />

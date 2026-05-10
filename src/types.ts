@@ -2,6 +2,8 @@ export type Goal = 'fat loss' | 'muscle gain' | 'maintenance';
 export type DietPreference = 'vegetarian' | 'non-vegetarian' | 'vegan' | 'veg + non-veg';
 export type WorkoutPreference = 'home workout' | 'gym workout';
 export type ExperienceLevel = 'beginner' | 'intermediate' | 'advanced';
+export type WorkoutFocusArea = 'Full Body' | 'Upper Body' | 'Lower Body' | 'Core' | 'Cardio';
+export type WorkoutDuration = '15 mins' | '30 mins' | '45 mins' | '60 mins';
 
 export interface UserProfile {
   name: string;
@@ -13,6 +15,8 @@ export interface UserProfile {
   goal: Goal;
   dietPreference: DietPreference;
   workoutPreference: WorkoutPreference;
+  workoutFocusArea?: WorkoutFocusArea;
+  workoutDuration?: WorkoutDuration;
   wakeupTime: string;
   sleepTime: string;
   workoutTime: string;
@@ -48,6 +52,8 @@ export interface Workout {
   exercises: Exercise[];
   type: WorkoutPreference;
   level: ExperienceLevel;
+  focusArea?: WorkoutFocusArea;
+  duration?: WorkoutDuration;
 }
 
 export interface DailyStats {

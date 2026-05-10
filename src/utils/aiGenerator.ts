@@ -1,4 +1,4 @@
-import { Goal, DietPreference, WorkoutPreference, ExperienceLevel, UserProfile, Meal, Workout, Exercise } from '../types';
+import { Goal, DietPreference, WorkoutPreference, ExperienceLevel, UserProfile, Meal, Workout, Exercise, WorkoutFocusArea, WorkoutDuration } from '../types';
 
 // --- DATASETS ---
 
@@ -102,6 +102,14 @@ const EXERCISE_DATA = {
       { name: 'Russian Twists', difficulty: 'beginner' },
       { name: 'Ab Wheel Rollouts', difficulty: 'advanced' },
       { name: 'Hanging Leg Raises', difficulty: 'advanced' }
+    ],
+    'Cardio': [
+      { name: 'Treadmill Intervals', difficulty: 'beginner' },
+      { name: 'Cycling Intervals', difficulty: 'beginner' },
+      { name: 'Rowing Machine', difficulty: 'intermediate' },
+      { name: 'Stair Climber', difficulty: 'intermediate' },
+      { name: 'Battle Ropes', difficulty: 'advanced' },
+      { name: 'Sled Push', difficulty: 'advanced' }
     ]
   },
   'home workout': {
@@ -137,6 +145,14 @@ const EXERCISE_DATA = {
       { name: 'Flutter Kicks', difficulty: 'beginner' },
       { name: 'Deadbug', difficulty: 'beginner' },
       { name: 'V-Ups', difficulty: 'advanced' }
+    ],
+    'Cardio': [
+      { name: 'Jumping Jacks', difficulty: 'beginner' },
+      { name: 'High Knees', difficulty: 'beginner' },
+      { name: 'Mountain Climbers', difficulty: 'beginner' },
+      { name: 'Burpees', difficulty: 'intermediate' },
+      { name: 'Skater Hops', difficulty: 'intermediate' },
+      { name: 'Plank Jacks', difficulty: 'intermediate' }
     ]
   }
 };
@@ -149,6 +165,36 @@ const WARMUP_OPTIONS = [
 const COOLDOWN_OPTIONS = [
   'Static Stretching', 'Deep Breathing', 'Child\'s Pose', 'Cat-Cow Stretch', 'Foam Rolling (Legs)', 'Hamstring Stretch'
 ];
+
+const FOCUS_TARGETS: Record<WorkoutFocusArea, Record<WorkoutPreference, string[]>> = {
+  'Full Body': {
+    'home workout': ['Full Body', 'Upper Body', 'Lower Body', 'Core'],
+    'gym workout': ['Quads', 'Chest', 'Back', 'Shoulders', 'Arms', 'Core']
+  },
+  'Upper Body': {
+    'home workout': ['Upper Body'],
+    'gym workout': ['Chest', 'Back', 'Shoulders', 'Arms']
+  },
+  'Lower Body': {
+    'home workout': ['Lower Body'],
+    'gym workout': ['Quads']
+  },
+  'Core': {
+    'home workout': ['Core'],
+    'gym workout': ['Core']
+  },
+  'Cardio': {
+    'home workout': ['Cardio', 'Full Body'],
+    'gym workout': ['Cardio']
+  }
+};
+
+const DURATION_EXERCISE_COUNT: Record<WorkoutDuration, number> = {
+  '15 mins': 3,
+  '30 mins': 5,
+  '45 mins': 7,
+  '60 mins': 9
+};
 
 // --- HELPERS ---
 
@@ -216,19 +262,21 @@ export const generateMealPlan = (profile: UserProfile): Meal[] => {
 
 export const generateWorkout = (profile: UserProfile): Workout => {
   const { workoutPreference, experienceLevel, goal } = profile;
+  const focusArea = profile.workoutFocusArea || 'Full Body';
+  const duration = profile.workoutDuration || '45 mins';
   const isGym = workoutPreference === 'gym workout';
   const categoryData = isGym ? EXERCISE_DATA['gym workout'] : EXERCISE_DATA['home workout'];
   
   let workoutExercises: Exercise[] = [];
   
-  // Selection Logic based on Goal and Level
-  const musclesToTarget = Object.keys(categoryData);
+  // Selection Logic based on location, focus, duration, goal, and level.
+  const musclesToTarget = FOCUS_TARGETS[focusArea][workoutPreference] || Object.keys(categoryData);
+  const targetExerciseCount = DURATION_EXERCISE_COUNT[duration];
+  const levelRank: Record<ExperienceLevel, number> = { beginner: 1, intermediate: 2, advanced: 3 };
   
   musclesToTarget.forEach(muscle => {
      const options = (categoryData as any)[muscle].filter((ex: any) => {
-       if (experienceLevel === 'beginner') return ex.difficulty === 'beginner';
-       if (experienceLevel === 'intermediate') return ex.difficulty === 'beginner' || ex.difficulty === 'intermediate';
-       return true;
+       return levelRank[ex.difficulty as ExperienceLevel] <= levelRank[experienceLevel];
      });
      
      if (options.length > 0) {
@@ -255,19 +303,57 @@ export const generateWorkout = (profile: UserProfile): Workout => {
      }
   });
 
-  // Shuffle exercise order for variety
-  workoutExercises = shuffleArray(workoutExercises);
+  while (workoutExercises.length < targetExerciseCount) {
+    const availableMuscles = musclesToTarget.filter(muscle => {
+      const options = ((categoryData as any)[muscle] || []).filter((ex: any) => {
+        return levelRank[ex.difficulty as ExperienceLevel] <= levelRank[experienceLevel];
+      });
+      return options.some((ex: any) => !workoutExercises.some(item => item.name === ex.name));
+    });
+
+    if (availableMuscles.length === 0) break;
+
+    const muscle = getRandomElement(availableMuscles);
+    const availableOptions = ((categoryData as any)[muscle] || []).filter((ex: any) => {
+      return levelRank[ex.difficulty as ExperienceLevel] <= levelRank[experienceLevel]
+        && !workoutExercises.some(item => item.name === ex.name);
+    });
+
+    const selected = getRandomElement(availableOptions) as any;
+
+    let sets = experienceLevel === 'beginner' ? 2 : 3;
+    if (goal === 'muscle gain') sets += 1;
+
+    let reps = '12';
+    if (goal === 'fat loss' || focusArea === 'Cardio') reps = '15-20';
+    if (goal === 'muscle gain' && focusArea !== 'Cardio') reps = '8-10';
+    if (goal === 'maintenance') reps = '12-15';
+
+    workoutExercises.push({
+      id: Math.random().toString(36).substr(2, 9),
+      name: selected.name,
+      muscle,
+      sets,
+      reps,
+      rest: goal === 'fat loss' || focusArea === 'Cardio' ? '30s' : '60s',
+      difficulty: selected.difficulty
+    });
+  }
+
+  workoutExercises = shuffleArray(workoutExercises).slice(0, targetExerciseCount);
 
   return {
     id: 'workout-' + Date.now(),
-    name: `${experienceLevel.charAt(0).toUpperCase() + experienceLevel.slice(1)} ${goal.charAt(0).toUpperCase() + goal.slice(1)} - ${isGym ? 'Gym' : 'Home'}`,
+    name: `${experienceLevel.charAt(0).toUpperCase() + experienceLevel.slice(1)} ${focusArea} - ${isGym ? 'Gym' : 'Home'} (${duration})`,
     exercises: [
       { id: 'wu-' + Math.random(), name: getRandomElement(WARMUP_OPTIONS), muscle: 'Warmup', sets: 1, reps: '3 mins', rest: '0s', difficulty: 'beginner' },
       ...workoutExercises,
       { id: 'cd-' + Math.random(), name: getRandomElement(COOLDOWN_OPTIONS), muscle: 'Cooldown', sets: 1, reps: '5 mins', rest: '0s', difficulty: 'beginner' }
     ],
     type: workoutPreference,
-    level: experienceLevel
+    level: experienceLevel,
+    focusArea,
+    duration
   };
 };
 

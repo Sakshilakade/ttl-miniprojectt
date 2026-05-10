@@ -5,7 +5,7 @@
   --color-brand-secondary: #fbcfe8; /* Baby Pink */
   --color-brand-pink: #fbcfe8;
   --color-brand-lime: #a3e635;
-  --color-app-bg: #f8f9fa; /* Newer Clean background */
+  --color-app-bg: #f8f8f5; /* Warm clean background */
   --color-app-surface: #ffffff; /* Clean White Card */
   --color-glass: rgba(255, 255, 255, 0.8);
   --color-glass-border: rgba(0, 0, 0, 0.05);
@@ -38,7 +38,7 @@
   }
 
   .premium-gradient-text {
-    @apply bg-clip-text text-transparent bg-gradient-to-r from-black to-black/60;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-brand-primary to-lime-500;
   }
 }
 
@@ -60,5 +60,5 @@
   @apply bg-transparent;
 }
 ::-webkit-scrollbar-thumb {
-  @apply bg-white/10 rounded-full hover:bg-white/20 transition-colors;
+  @apply bg-brand-primary/30 rounded-full hover:bg-brand-primary/50 transition-colors;
 }

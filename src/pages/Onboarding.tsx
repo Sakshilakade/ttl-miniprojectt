@@ -52,7 +52,7 @@ export default function Onboarding() {
                <label className="text-xs font-bold uppercase tracking-widest text-black/30">Your Height</label>
                <input
                  type="range" min="100" max="250"
-                 className="mt-4 h-2 w-full cursor-pointer appearance-none rounded-lg bg-black/5 accent-brand-primary"
+                 className="mt-4 h-2 w-full cursor-pointer appearance-none rounded-lg bg-[#f8f8f5] accent-brand-primary"
                  value={formData.height}
                  onChange={(e) => setFormData({ ...formData, height: parseInt(e.target.value) })}
                />
@@ -62,7 +62,7 @@ export default function Onboarding() {
                <label className="text-xs font-bold uppercase tracking-widest text-black/30">Your Weight</label>
                <input
                  type="range" min="30" max="200"
-                 className="mt-4 h-2 w-full cursor-pointer appearance-none rounded-lg bg-black/5 accent-brand-pink"
+                 className="mt-4 h-2 w-full cursor-pointer appearance-none rounded-lg bg-[#f8f8f5] accent-brand-pink"
                  value={formData.weight}
                  onChange={(e) => setFormData({ ...formData, weight: parseInt(e.target.value) })}
                />
@@ -78,7 +78,7 @@ export default function Onboarding() {
                 key={g}
                 onClick={() => setFormData({ ...formData, goal: g })}
                 className={`flex items-center justify-between rounded-2xl border p-6 transition-all ${
-                  formData.goal === g ? 'border-brand-primary bg-brand-primary/10 text-black' : 'border-black/5 bg-black/5 hover:bg-black/10 text-black/60'
+                  formData.goal === g ? 'border-brand-primary bg-brand-primary/10 text-black' : 'border-black/5 bg-[#f8f8f5] hover:bg-[#eeeee7] text-black/60'
                 }`}
               >
                 <span className="capitalize font-bold">{g}</span>
@@ -98,7 +98,7 @@ export default function Onboarding() {
                     key={d}
                     onClick={() => setFormData({ ...formData, dietPreference: d })}
                     className={`rounded-xl border py-4 px-2 text-xs font-bold transition-all ${
-                      formData.dietPreference === d ? 'border-brand-primary bg-brand-primary/10 text-black' : 'border-black/5 bg-black/5 text-black/40'
+                      formData.dietPreference === d ? 'border-brand-primary bg-brand-primary/10 text-black' : 'border-black/5 bg-[#f8f8f5] text-black/40'
                     }`}
                   >
                     {d.toUpperCase()}
@@ -114,7 +114,7 @@ export default function Onboarding() {
                     key={w}
                     onClick={() => setFormData({ ...formData, workoutPreference: w })}
                     className={`rounded-xl border py-4 font-bold transition-all ${
-                      formData.workoutPreference === w ? 'border-brand-primary bg-brand-primary/10 text-black' : 'border-black/5 bg-black/5 hover:bg-black/10 text-black/40'
+                      formData.workoutPreference === w ? 'border-brand-primary bg-brand-primary/10 text-black' : 'border-black/5 bg-[#f8f8f5] hover:bg-[#eeeee7] text-black/40'
                     }`}
                   >
                     {w.toUpperCase()}
@@ -136,7 +136,7 @@ export default function Onboarding() {
                   <label className="text-xs font-bold uppercase tracking-widest text-black/30">{t.label}</label>
                   <input
                     type="time"
-                    className="w-full rounded-2xl border border-black/5 bg-black/5 p-4 outline-none transition-all focus:border-brand-primary"
+                    className="w-full rounded-2xl border border-black/5 bg-[#f8f8f5] p-4 outline-none transition-all focus:border-brand-primary"
                     value={formData[t.key as keyof typeof formData]}
                     onChange={(e) => setFormData({ ...formData, [t.key]: e.target.value })}
                   />
@@ -152,7 +152,7 @@ export default function Onboarding() {
                 key={l}
                 onClick={() => setFormData({ ...formData, experienceLevel: l })}
                 className={`flex flex-col rounded-2xl border p-6 transition-all text-left ${
-                  formData.experienceLevel === l ? 'border-brand-primary bg-brand-primary/10 text-black' : 'border-black/5 bg-black/5 hover:bg-black/10 text-black/60'
+                  formData.experienceLevel === l ? 'border-brand-primary bg-brand-primary/10 text-black' : 'border-black/5 bg-[#f8f8f5] hover:bg-[#eeeee7] text-black/60'
                 }`}
               >
                 <span className="text-xs font-bold uppercase tracking-widest text-black/30 mb-1">Level</span>
@@ -173,7 +173,7 @@ export default function Onboarding() {
            {steps.map(s => (
              <div key={s.id} className="flex flex-col items-center gap-2">
                <div className={`flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-500 ${
-                 currentStep >= s.id ? 'border-brand-primary bg-brand-primary text-black' : 'border-black/5 bg-black/5 text-black/20'
+                 currentStep >= s.id ? 'border-brand-primary bg-brand-primary text-black' : 'border-black/5 bg-[#f8f8f5] text-black/20'
                }`}>
                  <s.icon size={18} />
                </div>
@@ -204,14 +204,14 @@ export default function Onboarding() {
           <button
             onClick={prevStep}
             disabled={currentStep === 1}
-            className="flex h-14 w-full items-center justify-center gap-2 rounded-2xl border border-black/5 bg-black/5 px-6 font-bold text-black transition-all hover:bg-black/10 disabled:opacity-30 disabled:pointer-events-none"
+            className="flex h-14 w-full items-center justify-center gap-2 rounded-2xl border border-black/5 bg-[#f8f8f5] px-6 font-bold text-black transition-all hover:bg-[#eeeee7] disabled:opacity-30 disabled:pointer-events-none"
           >
             <ChevronLeft size={20} /> Back
           </button>
           {currentStep === steps.length ? (
             <button
               onClick={handleFinish}
-              className="flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-black px-6 font-bold text-white transition-all hover:scale-105 active:scale-95"
+              className="flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-brand-primary px-6 font-bold text-black transition-all hover:scale-105 active:scale-95 shadow-lg shadow-brand-primary/20"
             >
               Get Started <Sparkles size={20} />
             </button>

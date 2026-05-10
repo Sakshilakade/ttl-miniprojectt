@@ -47,7 +47,7 @@ export default function Progress() {
         <button
           onClick={handleSave}
           className={`flex h-14 items-center justify-center gap-2 rounded-2xl px-8 font-bold transition-all active:scale-95 ${
-            saved ? 'bg-brand-primary text-black shadow-lg shadow-brand-primary/20' : 'bg-black text-white shadow-lg shadow-black/10'
+            saved ? 'bg-brand-primary text-black shadow-lg shadow-brand-primary/20' : 'bg-brand-primary text-black shadow-lg shadow-brand-primary/20'
           }`}
         >
           {saved ? <CheckCircle2 size={20} /> : <Save size={20} />}
@@ -74,13 +74,13 @@ export default function Progress() {
             <div className="flex gap-4 mb-4">
                <button 
                  onClick={() => setStats(s => ({ ...s, weight: parseFloat((s.weight - 0.1).toFixed(1)) }))}
-                 className="flex-1 h-12 rounded-xl bg-black/5 font-bold text-xl hover:bg-black/10 transition-colors"
+                 className="flex-1 h-12 rounded-xl bg-[#f8f8f5] font-bold text-xl hover:bg-[#eeeee7] transition-colors"
                >
                  -
                </button>
                <button 
                  onClick={() => setStats(s => ({ ...s, weight: parseFloat((s.weight + 0.1).toFixed(1)) }))}
-                 className="flex-1 h-12 rounded-xl bg-black/5 font-bold text-xl hover:bg-black/10 transition-colors"
+                 className="flex-1 h-12 rounded-xl bg-[#f8f8f5] font-bold text-xl hover:bg-[#eeeee7] transition-colors"
                >
                  +
                </button>
@@ -148,7 +148,7 @@ export default function Progress() {
               className={`flex h-16 w-full items-center justify-center gap-3 rounded-2xl font-bold transition-all ${
                 stats.workoutCompleted 
                 ? 'bg-brand-primary/10 text-brand-primary border-2 border-brand-primary' 
-                : 'bg-black/5 text-black/40 border-2 border-transparent'
+                : 'bg-[#f8f8f5] text-black/40 border-2 border-transparent'
               }`}
             >
               {stats.workoutCompleted ? (
