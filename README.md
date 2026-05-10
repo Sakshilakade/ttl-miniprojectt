@@ -1,20 +1,42 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# FitAI – Personalized AI Fitness Planner
 
-# Run and deploy your AI Studio app
+FitAI is a modern AI-inspired fitness web application that provides personalized meal plans, workout recommendations, BMI tracking, and daily fitness monitoring based on user goals and preferences.
 
-This contains everything you need to run your app locally.
+## Features
 
-View your app in AI Studio: https://ai.studio/apps/2c0c5f79-3a27-4d8b-bea3-fe6deff565f9
+* Personalized Meal Plans
+* Personalized Workout Plans
+* BMI Calculator
+* Water Intake Tracker
+* Progress Tracking
+* Workout Completion Checklist
+* AI-based Recommendation Logic
+* Responsive Modern UI
+* User Authentication
 
-## Run Locally
+## Technologies Used
 
-**Prerequisites:**  Node.js
+* React
+* TypeScript
+* Tailwind CSS
+* Vite
 
+## AI Concept
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+FitAI uses AI-inspired recommendation logic to generate personalized meals and workouts based on:
+
+* fitness goals
+* workout level
+* dietary preferences
+* user profile data
+
+## Developed By
+
+Sakshi Lakade
+
+## Run Project Locally
+
+```bash
+npm install
+npm run dev
+```
