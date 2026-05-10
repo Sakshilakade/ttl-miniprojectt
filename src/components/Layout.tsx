@@ -32,7 +32,7 @@ export const Layout = ({ children }: { children: ReactNode }) => {
   const isAuthPage = ['/', '/login', '/register', '/onboarding'].includes(location.pathname);
 
   if (isAuthPage) {
-    return <main>{children}</main>;
+    return <main className="min-h-screen bg-app-bg text-black">{children}</main>;
   }
 
   return (

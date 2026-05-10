@@ -167,62 +167,67 @@ export default function Onboarding() {
   };
 
   return (
-    <div className="mx-auto max-w-2xl px-6 py-12 md:py-24">
-      <div className="mb-12">
-        <div className="flex items-center justify-between mb-8">
-           {steps.map(s => (
-             <div key={s.id} className="flex flex-col items-center gap-2">
-               <div className={`flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-500 ${
-                 currentStep >= s.id ? 'border-brand-primary bg-brand-primary text-black' : 'border-black/5 bg-[#f8f8f5] text-black/20'
-               }`}>
-                 <s.icon size={18} />
+    <div className="relative min-h-screen overflow-hidden bg-app-bg px-6 py-10 text-black selection:bg-brand-primary selection:text-black md:py-16">
+      <div className="pointer-events-none absolute -left-24 -top-24 h-80 w-80 rounded-full bg-brand-primary/10 blur-[100px]" />
+      <div className="pointer-events-none absolute -right-24 bottom-10 h-80 w-80 rounded-full bg-brand-primary/10 blur-[110px]" />
+
+      <div className="relative z-10 mx-auto max-w-2xl">
+        <div className="mb-12">
+          <div className="mb-8 flex items-center justify-between">
+             {steps.map(s => (
+               <div key={s.id} className="flex flex-col items-center gap-2">
+                 <div className={`flex h-10 w-10 items-center justify-center rounded-full border transition-all duration-500 ${
+                   currentStep >= s.id ? 'border-brand-primary bg-brand-primary text-black shadow-sm shadow-brand-primary/20' : 'border-black/5 bg-white text-black/20'
+                 }`}>
+                   <s.icon size={18} />
+                 </div>
+                 <span className={`text-[10px] font-bold uppercase tracking-tighter ${currentStep >= s.id ? 'text-black' : 'text-black/20'}`}>
+                   {s.title}
+                 </span>
                </div>
-               <span className={`text-[10px] font-bold uppercase tracking-tighter ${currentStep >= s.id ? 'text-black' : 'text-black/20'}`}>
-                 {s.title}
-               </span>
-             </div>
-           ))}
+             ))}
+          </div>
+          <h1 className="text-center font-display text-4xl font-bold tracking-tight text-black">Set up your <span className="text-brand-primary">Profile</span></h1>
+          <p className="mt-2 text-center text-xs font-bold uppercase tracking-widest text-black/40">Step {currentStep} of {steps.length}: {steps[currentStep-1].title}</p>
         </div>
-        <h1 className="font-display text-4xl font-bold tracking-tight text-black text-center">Set up your <span className="text-brand-primary">Profile</span></h1>
-        <p className="mt-2 text-black/40 text-center uppercase tracking-widest text-xs font-bold">Step {currentStep} of {steps.length}: {steps[currentStep-1].title}</p>
-      </div>
 
-      <div className="glass-card min-h-[400px] p-8 md:p-12 bg-white border border-black/5 shadow-sm">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={currentStep}
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -20 }}
-            transition={{ duration: 0.3 }}
-          >
-            {renderStep()}
-          </motion.div>
-        </AnimatePresence>
+        <div className="glass-card min-h-[400px] border border-black/5 bg-white p-8 shadow-xl shadow-neutral-200/60 md:p-12">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentStep}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -20 }}
+              transition={{ duration: 0.3 }}
+            >
+              {renderStep()}
+            </motion.div>
+          </AnimatePresence>
 
-        <div className="mt-12 flex justify-between gap-4">
-          <button
-            onClick={prevStep}
-            disabled={currentStep === 1}
-            className="flex h-14 w-full items-center justify-center gap-2 rounded-2xl border border-black/5 bg-[#f8f8f5] px-6 font-bold text-black transition-all hover:bg-[#eeeee7] disabled:opacity-30 disabled:pointer-events-none"
-          >
-            <ChevronLeft size={20} /> Back
-          </button>
-          {currentStep === steps.length ? (
+          <div className="mt-12 flex justify-between gap-4">
             <button
-              onClick={handleFinish}
-              className="flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-brand-primary px-6 font-bold text-black transition-all hover:scale-105 active:scale-95 shadow-lg shadow-brand-primary/20"
+              onClick={prevStep}
+              disabled={currentStep === 1}
+              className="flex h-14 w-full items-center justify-center gap-2 rounded-2xl border border-black/5 bg-[#f8f8f5] px-6 font-bold text-black transition-all hover:bg-[#eeeee7] disabled:pointer-events-none disabled:opacity-30"
             >
-              Get Started <Sparkles size={20} />
+              <ChevronLeft size={20} /> Back
             </button>
-          ) : (
-            <button
-              onClick={nextStep}
-              className="flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-brand-primary px-6 font-bold text-black transition-all hover:scale-105 active:scale-95 shadow-lg shadow-brand-primary/20"
-            >
-              Next Step <ChevronRight size={20} />
-            </button>
-          )}
+            {currentStep === steps.length ? (
+              <button
+                onClick={handleFinish}
+                className="flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-brand-primary px-6 font-bold text-black shadow-lg shadow-brand-primary/20 transition-all hover:scale-105 active:scale-95"
+              >
+                Get Started <Sparkles size={20} />
+              </button>
+            ) : (
+              <button
+                onClick={nextStep}
+                className="flex h-14 w-full items-center justify-center gap-2 rounded-2xl bg-brand-primary px-6 font-bold text-black shadow-lg shadow-brand-primary/20 transition-all hover:scale-105 active:scale-95"
+              >
+                Next Step <ChevronRight size={20} />
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </div>
